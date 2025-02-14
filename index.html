@@ -40,10 +40,21 @@
     </style>
 </head>
 <body>
-    <video autoplay muted loop>
-        <source src="videoacademy.mp4" type="video/mp4">
+    <video id="video" autoplay muted loop>
         Tu navegador no soporta video.
     </video>
+
     <button class="enter-btn" onclick="window.location.href='https://asociaciondjacademy.es/portal';">Entrar</button>
+
+    <script>
+        async function loadVideo() {
+            const video = document.getElementById("video");
+            const response = await fetch("https://github.com/bongilou1/dj-academy/raw/main/videoacademy.mp4");
+            const videoBlob = await response.blob();
+            const videoURL = URL.createObjectURL(videoBlob);
+            video.src = videoURL;
+        }
+        loadVideo();
+    </script>
 </body>
 </html>
